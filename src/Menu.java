@@ -44,14 +44,16 @@ public class Menu {
             case 3:
                 System.out.println("Informe o valor a transferir:");
                 valorTransferido = inputclass.in.nextDouble();
-
-                valorConsultado = informacoesCliente.getValor();
-                valorDebitado = valorConsultado - valorTransferido;
-
-                informacoesCliente.setValor(valorDebitado);
                 valorConsultado = informacoesCliente.getValor();
 
-                System.out.println("Seu valor atual é de " + valorConsultado);
+                if (valorTransferido > valorConsultado) {
+                    System.out.println("Saldo insuficiente!");
+                } else {
+                    valorDebitado = valorConsultado - valorTransferido;
+                    informacoesCliente.setValor(valorDebitado);
+                    valorConsultado = informacoesCliente.getValor();
+                    System.out.println("Seu valor atual é de " + valorConsultado);
+                }
                 break;
             case 4:
                 System.out.printf("Até mais!");
